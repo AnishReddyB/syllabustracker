@@ -1,6 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
 import { motion } from 'framer-motion';
 import { Target, Book, BrainCircuit, Clock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const mockData = [
   { name: 'Mon', score: 65, avg: 60 },
@@ -13,6 +14,8 @@ const mockData = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   const stats = [
     { title: 'Current Accuracy', value: '85%', icon: Target, color: 'text-green-400', bg: 'bg-green-400/10' },
     { title: 'Syllabus Covered', value: '62%', icon: Book, color: 'text-primary-400', bg: 'bg-primary-400/10' },
@@ -29,7 +32,10 @@ export default function Dashboard() {
           </h1>
           <p className="text-gray-400">Here's your performance summary for JEE Mains preparation.</p>
         </div>
-        <button className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2.5 rounded-lg shadow-lg shadow-primary-500/30 transition-all font-medium">
+        <button 
+          onClick={() => navigate('/test')}
+          className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2.5 rounded-lg shadow-lg shadow-primary-500/30 transition-all font-medium"
+        >
           Take Mock Test
         </button>
       </div>
